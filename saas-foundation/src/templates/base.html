@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title_name %} Saas {% endblock title_name %}</title>
+  </head>
+  <body>
+    <h1>{{ myname }}</h1>
+ 
+    {% block content %}
+    <p>This is template inheritance</p>
+    {% endblock content %}
+  </body>
+</html>
