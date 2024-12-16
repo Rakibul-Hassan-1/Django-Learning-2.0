@@ -90,7 +90,26 @@ DATABASES = {
     }
 }
 
+CONN_MAX_AGE = config("CONN_MAX_AGE", cast=int, default = 30)
+DATABASE_URL = config("DATABASE_URL",default = None, cast=str)
+if DATABASE_URL is not None:
+    import dj_database_url
+    DATABASES = {
+        "default" : dj_database_url.config(default= DATABASE_URL,conn_health_checks = True, conn_max_age = 30) 
+        }
+    
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config("PGDATABASE"),
+#         'USER': config("PGUSER"),
+#         'PASSWORD': config("PGPASSWORD"),
+#         'HOST': config("PGHOST"),
+#         'PORT':config("PGPORT", 5432),
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
